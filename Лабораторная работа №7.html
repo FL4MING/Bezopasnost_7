@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Лабораторная работа №7</title>
+</head>
+<body>
+	<form name="form" action="javascript:Main()">
+		<input type="text" name="in" style="margin-bottom: 5px;"> - Строка для шифрования
+		<br>
+		<input type="submit" value="Зашифровать">
+		<br>
+		<br>
+		<input type="text" name="out"> -Результат
+	</form>
+	<script type="text/javascript">
+		function Main() {
+			var str = String(document.form.in.value);
+			var res = document.form.out;
+			res.value = "";
+			let i,result = "",subStr;
+			var mas = ["а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","ь","ы","ъ","э","ю","я"];
+			if (str != "") {
+				subStr = str.split("");
+				for (i = 0; i < subStr.length; i++) {
+					for (y = 0; y < mas.length; y++) {
+						if (subStr[i]==mas[y]) {
+							var mas2 = mas.reverse();
+							result = result+mas2[y];
+							break;
+						}
+					}
+				}
+				res.value = result;
+			}
+			else{
+				alert("Заполните поле");
+			}
+		}
+	</script>
+</body>
+</html>
